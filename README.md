@@ -1,7 +1,13 @@
 # LifeTag – Smart Emergency Healthcare System
 
 ## Overview
-LifeTag is a smart emergency healthcare system designed to provide instant access to critical patient data using unique LifeTag IDs and QR codes. It reduces delays caused by manual hospital records and enables faster and more efficient medical response during emergencies.
+LifeTag is a smart emergency healthcare system designed to provide instant access to critical patient data using unique LifeTag IDs and QR codes. It reduces delays caused by manual hospital records and enables faster and more efficient medical response during emergencies
+
+## Motivation
+
+During COVID, emergency situations highlighted a critical issue — there was often no time to gather patient history or medical details. In many cases, someone else had to step in without knowing anything about the patient.
+
+LifeTag was built to solve this gap by enabling instant access to essential medical information when time matters the most.
 
 ---
 
@@ -85,7 +91,13 @@ LifeTag/
 - Secure authentication system  
 - Cloud-based storage for medical records  
 - Real-time emergency alert system  
-- Hardware-based LifeTag device integration  
+- Hardware-based LifeTag device integration
+
+  ## Demo Video
+
+## Demo Video
+
+[![Watch Demo](https://img.youtube.com/vi/XkBffSxOBq0/0.jpg)](https://www.youtube.com/watch?v=XkBffSxOBq0)
 
 ---
 
