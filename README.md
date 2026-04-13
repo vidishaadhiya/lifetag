@@ -44,6 +44,7 @@ LifeTag addresses this issue by providing a QR-based system linked to a centrali
 ---
 
 ## Project Structure
+```
 LifeTag/
 │── app.py
 │── users.json
@@ -55,7 +56,7 @@ LifeTag/
 ├── qr/
 ├── qr_images/
 ├── sensor/
-
+```
 
 ---
 
