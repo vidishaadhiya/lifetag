@@ -62,7 +62,15 @@ LifeTag/
 │── appointments.json
 │
 ├── templates/
+│ ├── index.html
+│ ├── dashboard.html
+│ └── profile.html
+│
 ├── static/
+│ ├── css/
+│ ├── js/
+│ └── images/
+│
 ├── uploads/
 ├── qr/
 ├── qr_images/
