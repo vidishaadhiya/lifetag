@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="panel reveal" data-tilt>
+  <div class="badge">Your LifeTag QR</div>
+  <div class="spacer"></div>
+
+  <h1 class="h1">LifeTag ID</h1>
+  <p class="lead">{{ profile.lifetag_id }}</p>
+
+  <p class="small">
+    Save this QR on your phone, print it, or use it on a wearable.
+    Offline scan shows only emergency-approved info.
+  </p>
+
+  <div style="margin:20px 0;">
+    <img
+      src="{{ qr_image_url }}"
+      alt="LifeTag QR"
+      style="width:220px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.12);"
+    >
+  </div>
+
+  <div class="row">
+    <a
+      class="btn"
+      href="{{ url_for('static', filename=qr_file) }}"
+      download
+    >
+      Download QR
+    </a>
+
+    <a class="btn btn--ghost" href="{{ url_for('patient_dashboard') }}">
+      Back
+    </a>
+  </div>
+</div>
+
+{% endblock %}

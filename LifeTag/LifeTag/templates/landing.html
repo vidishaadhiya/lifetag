@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="hero reveal">
+  <div class="hero__grid">
+
+    <!-- LEFT CONTENT -->
+    <div>
+      <span class="badge">Emergency QR + Secure Online Health Vault</span>
+
+      <h1 class="h1">Your health identity, ready when it matters.</h1>
+
+      <p class="lead">
+        LifeTag gives every person a unique QR for emergencies.
+        Offline scan shows only critical details. Online dashboard stores reports,
+        appointments, and live vitals securely.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn" href="{{ url_for('signup') }}">Create account</a>
+        <a class="btn btn--ghost" href="{{ url_for('login') }}">Login</a>
+        <a class="btn btn--ghost" href="{{ url_for('offline_scan') }}">Offline scan viewer</a>
+      </div>
+
+      <div class="spacer"></div>
+      <div class="small">
+        Offline QR reveals only patient-approved emergency details.
+        Full medical data remains protected online.
+      </div>
+    </div>
+
+    <!-- RIGHT : EMERGENCY SNAPSHOT -->
+    <div class="hero__illus">
+      <div class="blob" aria-hidden="true"></div>
+
+      <div class="illus__card float">
+        <div class="badge">Sample Emergency Snapshot</div>
+
+        <div class="spacer"></div>
+
+        <div class="illus__kpi">
+          <div class="kpi">
+            <div class="v">B+</div>
+            <div class="l">Blood group</div>
+          </div>
+          <div class="kpi">
+            <div class="v">Penicillin</div>
+            <div class="l">Drug allergy</div>
+          </div>
+          <div class="kpi">
+            <div class="v">97%</div>
+            <div class="l">SpO₂</div>
+          </div>
+          <div class="kpi">
+            <div class="v">92</div>
+            <div class="l">Heart rate</div>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+        <div class="small">
+          Visible via offline QR scan during emergencies only.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section">
+  <div class="section__title reveal">What LifeTag can do</div>
+
+  <div class="grid grid--3">
+    <div class="card reveal" data-tilt>
+      <div class="card__icon">QR</div>
+      <div class="card__title">Emergency QR (Offline)</div>
+      <p class="card__text">
+        Works without internet. Shows blood group, allergies, emergency contact
+        and emergency numbers.
+      </p>
+      <div class="card__link">
+        <span class="badge">Instant access</span>
+        <span class="badge">Patient-controlled</span>
+      </div>
+    </div>
+
+    <div class="card reveal" data-tilt>
+      <div class="card__icon">DB</div>
+      <div class="card__title">Online Health Vault</div>
+      <p class="card__text">
+        Upload prescriptions, reports and lab results securely.
+        Accessible only via login.
+      </p>
+      <div class="card__link">
+        <span class="badge">Secure uploads</span>
+        <span class="badge">Doctor access</span>
+      </div>
+    </div>
+
+    <div class="card reveal" data-tilt>
+      <div class="card__icon">IoT</div>
+      <div class="card__title">Live Health Monitoring</div>
+      <p class="card__text">
+        Wearable sensors push vitals to dashboard in real time
+        for doctors to monitor.
+      </p>
+      <div class="card__link">
+        <span class="badge">Real-time vitals</span>
+        <span class="badge">History tracking</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="panel reveal">
+  <div class="row" style="justify-content: space-between;">
+    <div>
+      <div class="section__title" style="margin:0;">Get your LifeTag QR in minutes</div>
+      <div class="small">
+        Create account → set emergency info → generate QR → upload reports → book appointments
+      </div>
+    </div>
+    <div class="row">
+      <a class="btn" href="{{ url_for('signup') }}">Sign up</a>
+      <a class="btn btn--ghost" href="{{ url_for('login') }}">Login</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

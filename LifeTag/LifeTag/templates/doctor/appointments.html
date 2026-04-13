@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="panel">
+  <div class="badge">Doctor Panel</div>
+  <div class="spacer"></div>
+
+  <h1 class="h1">Appointments</h1>
+  <p class="lead">Manage and view all patient appointments.</p>
+
+  <div class="spacer"></div>
+
+  {% if appointments %}
+    <div class="grid">
+
+      {% for a in appointments %}
+      <div class="card">
+
+        <div class="card__title">👤 {{ a.patient }}</div>
+
+        <p><b>LifeTag ID:</b> {{ a.lifetag_id }}</p>
+        <p><b>Date:</b> {{ a.date }}</p>
+        <p><b>Time:</b> {{ a.time }}</p>
+        <p><b>Doctor:</b> {{ a.doctor }}</p>
+
+        <!-- 🔥 STATUS -->
+        <p><b>Status:</b> 
+          {% if a.status == "Approved" %}
+            <span style="color:green;">Approved</span>
+          {% elif a.status == "Rejected" %}
+            <span style="color:red;">Rejected</span>
+          {% else %}
+            <span style="color:orange;">Pending</span>
+          {% endif %}
+        </p>
+
+        <div class="spacer"></div>
+
+        <!-- 🔥 ACTION BUTTONS -->
+        <div class="row">
+
+          <a href="{{ url_for('update_appointment', id=a.id, action='approve') }}" 
+             class="btn">
+            Approve
+          </a>
+
+          <a href="{{ url_for('update_appointment', id=a.id, action='reject') }}" 
+             class="btn" style="background:#ff4d4d;">
+            Reject
+          </a>
+
+        </div>
+
+      </div>
+      {% endfor %}
+
+    </div>
+
+  {% else %}
+    <div class="alert">No appointments yet.</div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

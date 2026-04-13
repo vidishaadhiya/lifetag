@@ -1,0 +1,13 @@
+{
+  "username": "lav",
+  "lifetag_id": "LT-LAV-001",
+  "blood_group": "AB+",
+  "allergy": "DUST",
+  "conditions": "HIV",
+  "emergency_contact_name": "9696969696",
+  "emergency_contact_phone": "45465",
+  "emergency_numbers": [
+    "108",
+    "112"
+  ]
+}

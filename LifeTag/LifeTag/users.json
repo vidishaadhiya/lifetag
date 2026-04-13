@@ -1,0 +1,67 @@
+[
+  {
+    "username": "lav",
+    "password": "123",
+    "role": "patient"
+  },
+  {
+    "username": "vidishaadhiya",
+    "password": "vidisha@792004",
+    "role": "patient"
+  },
+  {
+    "username": "doc",
+    "password": "123",
+    "role": "doctor"
+  },
+  {
+    "username": "digvijaysingh",
+    "password": "digvijay@060505",
+    "role": "patient"
+  },
+  {
+    "username": "aryan021",
+    "password": "1234",
+    "role": "patient"
+  },
+  {
+    "username": "aryanw",
+    "password": "2005",
+    "role": "patient"
+  },
+  {
+    "username": "dp123",
+    "password": "739",
+    "role": "patient"
+  },
+  {
+    "username": "w1",
+    "password": "2005",
+    "role": "doctor"
+  },
+  {
+    "username": "aw021",
+    "password": "walia",
+    "role": "patient"
+  },
+  {
+    "username": "vidisha7904",
+    "password": "adhiya302528",
+    "role": "patient"
+  },
+  {
+    "username": "vidi7904",
+    "password": "vidisha@792004",
+    "role": "patient"
+  },
+  {
+    "username": "doctor1",
+    "password": "Doctor1",
+    "role": "doctor"
+  },
+  {
+    "username": "cardiologist1",
+    "password": "cardio",
+    "role": "doctor"
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "LT-VIDISHAAADHIY-001": {
+    "lifetag_id": "LT-VIDISHAAADHIY-001",
+    "name": "Vidisha Adhiya",
+    "emergency_pin_hash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "emergency": {
+      "blood_group": "on",
+      "allergies": "",
+      "conditions": "on",
+      "medications": "",
+      "emergency_contact_name": "",
+      "emergency_contact_phone": "",
+      "emergency_numbers": "on"
+    },
+    "privacy_flags": {
+      "show_blood_group": false,
+      "show_allergies": false,
+      "show_conditions": false,
+      "show_medications": false,
+      "show_emergency_contact": false,
+      "show_emergency_numbers": false
+    },
+    "version": "1"
+  }
+}

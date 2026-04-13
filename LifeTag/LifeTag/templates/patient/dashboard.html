@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="panel reveal" data-tilt>
+  <div class="badge">Patient Dashboard</div>
+  <div class="spacer"></div>
+
+  <h1 class="h1" style="font-size:30px;">Your LifeTag</h1>
+  <p class="lead" style="margin-bottom:0;">
+    QR, privacy control, uploads, appointments, and live vitals.
+  </p>
+
+  <div class="section">
+    <div class="grid grid--3">
+
+      <div class="card reveal" data-tilt>
+        <div class="card__icon">QR</div>
+        <div class="card__title">Generate QR</div>
+        <p class="card__text">Create PIN-locked QR for phone/wearable.</p>
+        <div class="card__link">
+          <a class="btn btn--ghost" href="{{ url_for('patient_qr') }}">Open</a>
+        </div>
+      </div>
+
+      <div class="card reveal" data-tilt>
+        <div class="card__icon">PR</div>
+        <div class="card__title">Privacy / Emergency Info</div>
+        <p class="card__text">Choose what offline scan can show.</p>
+        <div class="card__link">
+          <a class="btn btn--ghost" href="{{ url_for('patient_privacy') }}">Manage</a>
+        </div>
+      </div>
+
+      <div class="card reveal" data-tilt>
+        <div class="card__icon">UP</div>
+        <div class="card__title">Upload Reports</div>
+        <p class="card__text">Store PDFs/images securely online.</p>
+        <div class="card__link">
+          <a class="btn btn--ghost" href="{{ url_for('patient_upload') }}">Upload</a>
+        </div>
+      </div>
+
+      <div class="card reveal" data-tilt>
+        <div class="card__icon">AP</div>
+        <div class="card__title">Appointment</div>
+        <p class="card__text">Book and track your appointments.</p>
+        <div class="card__link">
+          <a href="{{ url_for('book_appointment') }}" class="btn btn--ghost">
+            Book Appointment
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="section">
+  <div class="section__title">Live Vitals (Simulated)</div>
+
+  <div class="card">
+    <p><b>Heart Rate:</b> <span id="hr">--</span></p>
+    <p><b>SpO2:</b> <span id="spo2">--</span></p>
+    <p><b>BP:</b> <span id="bp">--</span></p>
+  </div>
+</div>
+
+  <!-- 🔥 YOUR APPOINTMENTS SECTION -->
+  <div class="section">
+    <div class="section__title">Your Appointments</div>
+
+    {% if appointments %}
+      <div class="grid">
+
+        {% for a in appointments %}
+        <div class="card">
+
+          <div class="card__title">📅 {{ a.date }} - {{ a.time }}</div>
+
+          <p><b>Doctor:</b> {{ a.doctor }}</p>
+          <p><b>LifeTag ID:</b> {{ a.lifetag_id }}</p>
+
+          <!-- 🔥 STATUS -->
+          <p><b>Status:</b> 
+            {% if a.status == "Approved" %}
+              <span style="color:green;">Approved</span>
+            {% elif a.status == "Rejected" %}
+              <span style="color:red;">Rejected</span>
+            {% else %}
+              <span style="color:orange;">Pending</span>
+            {% endif %}
+          </p>
+
+        </div>
+        {% endfor %}
+
+      </div>
+
+    {% else %}
+      <div class="alert">No appointments booked yet.</div>
+    {% endif %}
+  </div>
+
+</div>
+
+<script>
+async function loadVitals() {
+  let res = await fetch("/api/vitals/{{ profile.username }}");
+  let data = await res.json();
+
+  document.getElementById("hr").innerText = data.heart_rate;
+  document.getElementById("spo2").innerText = data.spo2 + "%";
+  document.getElementById("bp").innerText = data.bp;
+}
+
+// 🔁 auto refresh every 2 sec
+setInterval(loadVitals, 2000);
+
+// first load
+loadVitals();
+</script>
+
+{% endblock %}

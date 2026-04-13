@@ -1,0 +1,10 @@
+{
+  "LT-VIDISHAAADHIY-001": {
+    "show_blood_group": true,
+    "show_allergies": true,
+    "show_conditions": true,
+    "show_medications": true,
+    "show_emergency_contact": true,
+    "show_emergency_numbers": true
+  }
+}

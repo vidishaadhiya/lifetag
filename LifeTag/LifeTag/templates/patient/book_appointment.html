@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="panel">
+  <div class="badge">Book Appointment</div>
+  <div class="spacer"></div>
+
+  <h1 class="h1">Schedule Appointment</h1>
+
+  <form method="POST" action="{{ url_for('book_appointment') }}">
+    
+    <div class="field">
+      <label>Date</label>
+      <input type="date" name="date" required>
+    </div>
+
+    <div class="field">
+      <label>Time</label>
+      <input type="time" name="time" required>
+    </div>
+
+    <div class="field">
+      <label>Doctor</label>
+      <select name="doctor">
+        <option value="general">General</option>
+        <option value="cardio">Cardiologist</option>
+        <option value="neuro">Neurologist</option>
+      </select>
+    </div>
+
+    <div class="spacer"></div>
+
+    <button class="btn" type="submit">Book Appointment</button>
+
+  </form>
+</div>
+
+{% endblock %}

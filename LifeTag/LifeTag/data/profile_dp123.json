@@ -1,0 +1,13 @@
+{
+  "username": "dp123",
+  "lifetag_id": "LT-DP123-001",
+  "blood_group": "A+",
+  "allergy": "dust",
+  "conditions": "AIDS",
+  "emergency_contact_name": "89898989898",
+  "emergency_contact_phone": "118",
+  "emergency_numbers": [
+    "108",
+    "112"
+  ]
+}

@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="panel reveal" data-tilt>
+  <div class="badge">Doctor Dashboard</div>
+  <div class="spacer"></div>
+
+  <h1 class="h1" style="font-size:30px;">Clinical Access Panel</h1>
+  <p class="lead" style="margin-bottom:0;">
+    Search patients, view emergency data, monitor vitals, and manage appointments.
+  </p>
+
+  <div class="section">
+    <div class="grid grid--3">
+
+      <!-- Patient Lookup -->
+      <div class="card reveal" data-tilt>
+        <div class="card__icon">ID</div>
+        <div class="card__title">Patient Lookup</div>
+        <p class="card__text">
+          Search patient by LifeTag ID from QR scan.
+        </p>
+        <div class="card__link">
+          <a href="{{ url_for('doctor_patient_search') }}" class="btn btn--ghost">Search</a>
+        </div>
+      </div>
+
+      <!-- Emergency Scan -->
+      <div class="card reveal" data-tilt>
+        <div class="card__icon">QR</div>
+        <div class="card__title">Emergency Scan View</div>
+        <p class="card__text">
+          View emergency details from scanned QR.
+        </p>
+        <div class="card__link">
+          <a class="btn btn--ghost" href="{{ url_for('offline_scan') }}">Open</a>
+        </div>
+      </div>
+
+      <!-- Appointments -->
+      <div class="card reveal" data-tilt>
+        <div class="card__icon">AP</div>
+        <div class="card__title">Appointments</div>
+        <p class="card__text">
+          Manage upcoming patient appointments.
+        </p>
+        <div class="card__link">
+          <a href="{{ url_for('doctor_appointments') }}" class="btn btn--ghost">Search</a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

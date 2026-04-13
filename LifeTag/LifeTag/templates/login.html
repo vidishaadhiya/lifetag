@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>LifeTag | Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+
+  <div class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="{{ url_for('landing') }}">
+        <div class="logo">LT</div>
+        <div class="brand__text">
+          <div class="brand__title">LifeTag</div>
+          <div class="brand__sub">Secure Smart Health ID</div>
+        </div>
+      </a>
+      <div class="navlinks">
+        <a href="{{ url_for('landing') }}">Home</a>
+        <a class="btn btn--soft" href="{{ url_for('signup') }}">Create account</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="container">
+      <div class="grid grid--3" style="grid-template-columns: 1.1fr 0.9fr; align-items: stretch;">
+
+        <div class="panel reveal" data-tilt style="margin-top:0;">
+          <div class="badge">Login</div>
+          <div class="spacer"></div>
+          <h1 class="h1" style="font-size:30px;">Welcome back</h1>
+          <p class="lead" style="margin-bottom:0;">
+            Patients control what emergency scans show. Reports & appointments remain protected online.
+          </p>
+
+          <form class="form" method="POST" action="#">
+            <div class="field">
+              <label>Username</label>
+              <input name="username" placeholder="Enter your username" required>
+            </div>
+
+            <div class="field">
+              <label>Password</label>
+              <input type="password" name="password" placeholder="Enter password" required>
+            </div>
+
+            <div class="field">
+              <label>Role</label>
+              <select name="role" required>
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+              </select>
+            </div>
+
+            <div class="row">
+              <button class="btn" type="submit">Login</button>
+              <a class="btn btn--ghost" href="{{ url_for('offline_scan') }}">Offline scan viewer</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel reveal" data-tilt style="margin-top:0;">
+          <div class="badge">Emergency Preview</div>
+          <div class="spacer"></div>
+          <h2 style="margin:0 0 10px 0;">What a doctor sees</h2>
+          <p class="small" style="margin-top:0;">
+            Offline scan shows only patient-approved emergency essentials.
+          </p>
+
+          <div class="illus__kpi">
+            <div class="kpi"><div class="v">B+</div><div class="l">Blood Group</div></div>
+            <div class="kpi"><div class="v">Penicillin</div><div class="l">Drug Allergy</div></div>
+            <div class="kpi"><div class="v">108 / 112</div><div class="l">Emergency Services</div></div>
+            <div class="kpi"><div class="v">Call Family</div><div class="l">Emergency Contact</div></div>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="row">
+            <a class="btn btn--ghost" href="{{ url_for('signup') }}">Create LifeTag</a>
+            <a class="btn btn--ghost" href="{{ url_for('doctor_dashboard') }}">Doctor UI</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

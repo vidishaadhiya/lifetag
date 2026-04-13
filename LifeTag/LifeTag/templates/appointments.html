@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    Appointment Records
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>All Appointments</h2>
+
+        {% for a in appointments %}
+            <div class="appointment-box">
+                <p><strong>Patient:</strong> {{ a.patient }}</p>
+                <p><strong>Doctor:</strong> {{ a.doctor }}</p>
+                <p><strong>Date:</strong> {{ a.date }}</p>
+
+                <p>
+                    <strong>Status:</strong>
+                    {% if a.status == "pending" %}
+                        <span class="status pending">Pending</span>
+                    {% elif a.status == "approved" %}
+                        <span class="status approved">Approved</span>
+                    {% else %}
+                        <span class="status rejected">Rejected</span>
+                    {% endif %}
+                </p>
+
+                <!-- Buttons only for doctor -->
+                {% if role == "doctor" and a.status == "pending" %}
+                    <a href="/approve/{{loop.index0}}" class="btn">Approve</a>
+                    <a href="/reject/{{loop.index0}}" class="btn btn-secondary">Reject</a>
+                {% endif %}
+            </div>
+            <hr>
+        {% endfor %}
+
+    </div>
+</div>
+
+</body>
+</html>

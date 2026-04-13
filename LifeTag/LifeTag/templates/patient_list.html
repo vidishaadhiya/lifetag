@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    Patient Records
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h2>All Patients</h2>
+
+        {% for patient in patients %}
+            <div style="margin-bottom:10px;">
+                <strong>{{ patient }}</strong>
+                <br>
+                <a href="/patient_data/{{patient}}" class="btn">View Data</a>
+                <a href="/emergency/{{patient}}" class="btn btn-secondary">Emergency Mode</a>
+            </div>
+            <hr>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

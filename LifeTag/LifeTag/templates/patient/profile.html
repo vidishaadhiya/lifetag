@@ -1,0 +1,20 @@
+<h2>Update Medical Profile</h2>
+
+<form method="post">
+  <label>Blood Group:</label>
+  <input type="text" name="blood_group" value="{{ profile.blood_group }}"><br><br>
+
+  <label>Allergies:</label>
+  <input type="text" name="allergy" value="{{ profile.allergy }}"><br><br>
+
+  <label>Medical Conditions:</label>
+  <input type="text" name="conditions" value="{{ profile.conditions }}"><br><br>
+
+  <label>Emergency Contact Name:</label>
+  <input type="text" name="contact_name" value="{{ profile.emergency_contact_name }}"><br><br>
+
+  <label>Emergency Contact Phone:</label>
+  <input type="text" name="contact_phone" value="{{ profile.emergency_contact_phone }}"><br><br>
+
+  <button type="submit">Save Profile</button>
+</form>

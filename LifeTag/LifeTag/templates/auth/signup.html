@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="grid" style="grid-template-columns: 1.1fr 0.9fr; gap:14px; align-items:stretch;">
+  
+  <!-- LEFT: SIGNUP FORM -->
+  <div class="panel reveal" data-tilt style="margin-top:0;">
+    <div class="badge">Create Account</div>
+    <div class="spacer"></div>
+
+    <h1 class="h1" style="font-size:30px;">Get your LifeTag</h1>
+    <p class="lead" style="margin-bottom:0;">
+      Create your secure health identity. Generate an emergency QR and manage reports online.
+    </p>
+
+    {% if error %}
+      <div class="spacer"></div>
+      <div class="alert">{{ error }}</div>
+    {% endif %}
+
+    <form class="form" method="POST" action="{{ url_for('signup') }}">
+      
+      <div class="field">
+        <label>Full Name</label>
+        <input name="name" placeholder="e.g. Vidisha Adhiya" required>
+      </div>
+
+      <div class="field">
+        <label>Username</label>
+        <input name="username" placeholder="Choose a unique username" required>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Create a password" required>
+      </div>
+
+      <div class="field">
+        <label>Role</label>
+        <select name="role" required>
+          <option value="patient" selected>Patient</option>
+          <option value="doctor">Doctor</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <button class="btn" type="submit">Create account</button>
+        <a class="btn btn--ghost" href="{{ url_for('login') }}">I already have an account</a>
+      </div>
+
+      <div class="small">
+        By continuing, you agree that offline QR will only show emergency essentials.
+      </div>
+    </form>
+  </div>
+
+  <!-- RIGHT: PREVIEW CARD -->
+  <div class="panel reveal" data-tilt style="margin-top:0;">
+    <div class="badge">What you get</div>
+    <div class="spacer"></div>
+
+    <div class="card" style="margin-top:0;">
+      <div class="card__title">LifeTag Emergency QR</div>
+      <p class="card__text">
+        After signup, you get a unique LifeTag ID and QR code to save on your phone / wearable.
+      </p>
+      <div class="card__link">
+        <span class="badge">Offline-ready</span>
+        <span class="badge">Secure online vault</span>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="card">
+      <div class="card__title">Privacy controls</div>
+      <p class="card__text">
+        You decide what is visible in emergencies (blood group, allergies, emergency contact).
+        Reports stay protected behind login.
+      </p>
+      <div class="card__link">
+        <span class="badge">Patient-controlled</span>
+        <span class="badge">Doctor view</span>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <a class="btn btn--ghost" href="{{ url_for('offline_scan') }}">Try Offline Scan Viewer</a>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{
+  "LT-VIDISHAAADHIY-001": {
+    "lifetag_id": "LT-VIDISHAAADHIY-001",
+    "name": "Vidisha Adhiya",
+    "emergency": {
+      "blood_group": "B+",
+      "allergies": "Penicillin",
+      "conditions": "None",
+      "medications": "None",
+      "emergency_contact_name": "Family",
+      "emergency_contact_phone": "9999999999",
+      "emergency_numbers": "108,112"
+    },
+    "created_at": "2026-02-11T03:18:24"
+  }
+}

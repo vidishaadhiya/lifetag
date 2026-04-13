@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="panel reveal">
+
+  <div class="badge">Doctor Panel</div>
+  <div class="spacer"></div>
+
+  <h2>Search Patient by LifeTag ID</h2>
+
+  <!-- SEARCH FORM -->
+  <form method="POST" class="form">
+    <div class="field">
+      <label>LifeTag ID</label>
+      <input name="lifetag_id" placeholder="e.g. LT-LAV-001" required>
+    </div>
+    <button class="btn">Search</button>
+  </form>
+
+  <div class="spacer"></div>
+
+  {% if result %}
+
+    <!-- LIVE VITALS -->
+    <div class="section">
+      <div class="section__title">Live Vitals</div>
+
+      <div class="card">
+        <p><b>Heart Rate:</b> <span id="hr">--</span></p>
+        <p><b>SpO2:</b> <span id="spo2">--</span></p>
+        <p><b>BP:</b> <span id="bp">--</span></p>
+      </div>
+    </div>
+
+    <!-- PATIENT DETAILS -->
+    <div class="section">
+
+      <div class="card">
+        <div class="card__title">👤 {{ result.username }}</div>
+
+        <p><strong>LifeTag ID:</strong> {{ result.lifetag_id }}</p>
+        <p><strong>Blood Group:</strong> {{ result.blood_group }}</p>
+        <p><strong>Allergy:</strong> {{ result.allergy }}</p>
+        <p><strong>Conditions:</strong> {{ result.conditions }}</p>
+        <p><strong>Emergency Contact:</strong> {{ result.emergency_contact_name }}</p>
+        <p><strong>Phone:</strong> {{ result.emergency_contact_phone }}</p>
+      </div>
+
+      <div class="spacer"></div>
+
+      <!-- REPORTS -->
+      <div class="section">
+        <div class="section__title">Patient Reports</div>
+
+        {% if reports %}
+          <div class="grid">
+
+            {% for r in reports %}
+            <div class="card">
+              <div class="card__title">📄 {{ r }}</div>
+
+              <div class="card__link">
+                <a href="{{ url_for('patient_report', filename=r, user=result.username) }}" 
+                   target="_blank" 
+                   class="btn btn--ghost">
+                  Open Report
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+        {% else %}
+          <div class="alert">No reports uploaded.</div>
+        {% endif %}
+      </div>
+
+    </div>
+
+  {% endif %}
+
+</div>
+
+<!-- JS FOR LIVE VITALS -->
+{% if result %}
+<script>
+async function loadVitals() {
+  try {
+    let res = await fetch("/api/vitals/{{ result.username }}");
+    let data = await res.json();
+
+    document.getElementById("hr").innerText = data.heart_rate;
+    document.getElementById("spo2").innerText = data.spo2 + "%";
+    document.getElementById("bp").innerText = data.bp;
+  } catch (e) {
+    console.error("Error fetching vitals", e);
+  }
+}
+
+setInterval(loadVitals, 2000);
+loadVitals();
+</script>
+{% endif %}
+
+{% endblock %}

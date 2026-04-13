@@ -1,0 +1,7 @@
+{
+  "blood_group": false,
+  "allergy": false,
+  "conditions": true,
+  "emergency_contact": true,
+  "emergency_numbers": true
+}

@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="panel reveal" data-tilt>
+  <div class="badge">Offline Emergency Scan</div>
+  <div class="spacer"></div>
+
+  <h1 class="h1" style="font-size:30px;">Emergency viewer (offline)</h1>
+  <p class="lead">
+    Paste scanned QR text (JSON) here. PIN optional demo. This shows only patient-approved emergency info.
+  </p>
+
+  <div class="form">
+    <div class="field">
+      <label>Scanned QR Text</label>
+      <textarea id="qrText" rows="6" placeholder='Paste scanned QR content here (JSON)'></textarea>
+    </div>
+
+    <div class="field">
+      <label>Emergency PIN (demo)</label>
+      <input id="pin" placeholder="Enter PIN (optional demo)">
+      <div class="small">Demo PIN: <b>1234</b></div>
+    </div>
+
+    <div class="row">
+      <button class="btn" type="button" onclick="showEmergency()">View emergency info</button>
+      <a class="btn btn--ghost" href="{{ url_for('landing') }}">Back</a>
+    </div>
+
+    <div class="spacer"></div>
+    <div id="out" class="panel" style="display:none; margin-top:0;"></div>
+
+    <div class="small" style="margin-top:10px;">
+      Reports & full history are online-only. Offline view is limited to emergency essentials.
+    </div>
+  </div>
+</div>
+
+<script>
+function esc(s){
+  return String(s ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");
+}
+
+function showEmergency(){
+  const out = document.getElementById("out");
+  out.style.display = "none";
+  out.innerHTML = "";
+
+  const text = document.getElementById("qrText").value.trim();
+  const pin = document.getElementById("pin").value.trim();
+
+  if (!text){
+    out.style.display = "block";
+    out.innerHTML = `<div class="alert">Please paste QR text (JSON) first.</div>`;
+    return;
+  }
+
+  // demo PIN check
+  if (pin && pin !== "1234"){
+    out.style.display = "block";
+    out.innerHTML = `<div class="alert">Wrong PIN (demo). Try 1234 or leave blank.</div>`;
+    return;
+  }
+
+  let data;
+  try{
+    data = JSON.parse(text);
+  } catch(e){
+    out.style.display = "block";
+    out.innerHTML = `<div class="alert">Invalid JSON. Paste the exact scanned QR text.</div>`;
+    return;
+  }
+
+  const rows = [];
+
+  if (data.LifeTagID) rows.push(["LifeTag ID", data.LifeTagID]);
+  if (data.BloodGroup) rows.push(["Blood Group", data.BloodGroup]);
+  if (data.Allergy) rows.push(["Allergy", data.Allergy]);
+  if (data.Conditions) rows.push(["Conditions", data.Conditions]);
+
+  if (data.EmergencyContact){
+    const c = data.EmergencyContact;
+    rows.push(["Emergency Contact", `${c.name || ""} ${c.phone ? "(" + c.phone + ")" : ""}`.trim()]);
+  }
+
+  if (data.EmergencyNumbers && Array.isArray(data.EmergencyNumbers)){
+    rows.push(["Emergency Numbers", data.EmergencyNumbers.join(", ")]);
+  }
+
+  if (rows.length === 0){
+    out.style.display = "block";
+    out.innerHTML = `<div class="alert">No emergency fields found in QR text.</div>`;
+    return;
+  }
+
+  let html = `<div class="section__title" style="margin-top:0;">Emergency Info</div>`;
+  html += `<div class="grid">`;
+  rows.forEach(([k,v])=>{
+    html += `
+      <div class="card reveal" data-tilt>
+        <div class="card__title">${esc(k)}</div>
+        <p class="card__text">${esc(v)}</p>
+      </div>
+    `;
+  });
+  html += `</div>`;
+
+  out.style.display = "block";
+  out.innerHTML = html;
+}
+</script>
+
+{% endblock %}

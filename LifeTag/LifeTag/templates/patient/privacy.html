@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="panel reveal" data-tilt>
+  <div class="badge">Privacy Control</div>
+  <div class="spacer"></div>
+
+  <h1 class="h1" style="font-size:30px;">Control what your QR shows</h1>
+  <p class="lead">Offline scan should show only what you approve. Save → Preview QR.</p>
+
+  <form class="form" method="POST">
+    <div class="card" data-tilt>
+      <div class="card__title">Emergency fields</div>
+      <p class="card__text">Tick what you want visible in the offline QR scan.</p>
+
+      <div class="spacer"></div>
+
+      <label><input type="checkbox" name="blood_group" {% if settings.blood_group %}checked{% endif %}> Blood group</label><br>
+      <label><input type="checkbox" name="allergy" {% if settings.allergy %}checked{% endif %}> Allergies</label><br>
+      <label><input type="checkbox" name="conditions" {% if settings.conditions %}checked{% endif %}> Conditions</label><br>
+      <label><input type="checkbox" name="emergency_contact" {% if settings.emergency_contact %}checked{% endif %}> Emergency contact</label><br>
+      <label><input type="checkbox" name="emergency_numbers" {% if settings.emergency_numbers %}checked{% endif %}> Emergency numbers (108/112)</label><br>
+
+      <div class="spacer"></div>
+      <div class="row">
+        <button class="btn" type="submit">Save settings</button>
+        <a class="btn btn--ghost" href="{{ url_for('patient_qr') }}">Preview QR</a>
+        <a class="btn btn--ghost" href="{{ url_for('patient_dashboard') }}">Back</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

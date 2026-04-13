@@ -1,0 +1,17 @@
+{
+  "patient_id": "9761D11D76",
+  "name": "Vidisha Adhiya",
+  "created_at": "2026-02-10T19:15:47.828912",
+  "emergency": {
+    "blood_group": "",
+    "allergies": [],
+    "conditions": [],
+    "medications": [],
+    "emergency_contact_name": "",
+    "emergency_contact_phone": "",
+    "emergency_number": "112",
+    "notes": ""
+  },
+  "reports": [],
+  "vitals": []
+}
