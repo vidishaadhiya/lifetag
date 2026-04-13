@@ -114,5 +114,5 @@ Contributions are welcome. Feel free to fork the repository and submit improveme
 ---
 
 ## Contact
-Created by Vidisha Adhiya  adhiyavidisha@gmail.com
+Created by Vidisha Adhiya.  adhiyavidisha@gmail.com
 Open to feedback, collaboration, and opportunities.
