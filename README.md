@@ -93,9 +93,8 @@ LifeTag/
 - Real-time emergency alert system  
 - Hardware-based LifeTag device integration
 
-  ## Demo Video
-
 ## Demo Video
+kindly click the thumbnail :)
 
 [![Watch Demo](https://img.youtube.com/vi/XkBffSxOBq0/0.jpg)](https://www.youtube.com/watch?v=XkBffSxOBq0)
 
